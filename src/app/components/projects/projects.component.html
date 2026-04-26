@@ -1,0 +1,76 @@
+<section id="projects" class="projects">
+  <div class="section-header">
+    <h2 class="gradient-text">Featured Projects</h2>
+    <p>High-impact products built with scalability, security, and AI at the core.</p>
+  </div>
+
+  <div class="projects-grid">
+    <div *ngFor="let project of projects" 
+         class="project-card glass-card" 
+         appTilt
+         (click)="openModal(project)">
+      <div class="project-image">
+        <img [src]="project.image" [alt]="project.title">
+        <div class="project-overlay">
+          <span class="view-btn">View Deep Dive</span>
+        </div>
+      </div>
+      <div class="project-info">
+        <span class="project-category">{{ project.category }}</span>
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.description }}</p>
+        <div class="project-tags">
+          <span *ngFor="let tag of project.tags">{{ tag }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Deep-Dive Modal -->
+  <div class="modal-overlay" *ngIf="selectedProject" (click)="closeModal()">
+    <div class="modal-container glass-card" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closeModal()">&times;</button>
+      
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="project-category">{{ selectedProject.category }}</span>
+          <h2>{{ selectedProject.title }}</h2>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-visual">
+            <img [src]="selectedProject.image" [alt]="selectedProject.title">
+          </div>
+          
+          <div class="modal-details">
+            <div class="detail-section">
+              <h4><span class="icon">🎯</span> The Challenge</h4>
+              <p>{{ selectedProject.challenge }}</p>
+            </div>
+            
+            <div class="detail-section">
+              <h4><span class="icon">💡</span> The Solution</h4>
+              <p>{{ selectedProject.solution }}</p>
+            </div>
+
+            <div class="detail-section">
+              <h4><span class="icon">🚀</span> The Outcome</h4>
+              <p>{{ selectedProject.outcome }}</p>
+            </div>
+
+            <div class="modal-tech">
+              <h4>Tech Stack</h4>
+              <div class="project-tags">
+                <span *ngFor="let tag of selectedProject.tags">{{ tag }}</span>
+              </div>
+            </div>
+
+            <div class="modal-actions" *ngIf="selectedProject.link">
+              <a [href]="selectedProject.link" target="_blank" class="btn-primary">Visit Live Site</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

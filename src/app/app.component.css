@@ -1,0 +1,10 @@
+.content-hidden {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
+
+main {
+  transition: opacity 1s ease;
+}

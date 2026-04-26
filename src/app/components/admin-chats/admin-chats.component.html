@@ -1,0 +1,51 @@
+<div class="admin-container">
+  <!-- Login Screen -->
+  <div *ngIf="!isAuthorized" class="login-screen glass-card">
+    <h2 class="gradient-text">Admin Access</h2>
+    <p>Please enter your password to view AI chat logs.</p>
+    <div class="form-group">
+      <input type="password" [(ngModel)]="password" (keyup.enter)="checkPassword()" placeholder="Password">
+      <button class="btn-primary" (click)="checkPassword()">Login</button>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div *ngIf="isAuthorized" class="dashboard-screen">
+    <div class="dashboard-header">
+      <h2 class="gradient-text">Chat Logs Dashboard</h2>
+      <button class="btn-outline" (click)="clearAll()">Clear All Logs</button>
+    </div>
+
+    <div class="dashboard-grid">
+      <!-- Logs List -->
+      <div class="logs-list glass-card">
+        <h3>Recent Conversations</h3>
+        <div *ngIf="logs.length === 0" class="no-logs">No chats recorded yet.</div>
+        <div 
+          *ngFor="let log of logs" 
+          class="log-item" 
+          [class.active]="selectedLog?.id === log.id"
+          (click)="selectLog(log)"
+        >
+          <div class="log-info">
+            <span class="log-id">ID: {{ log.id }}</span>
+            <span class="log-time">{{ log.timestamp | date:'short' }}</span>
+          </div>
+          <div class="log-preview">{{ log.messages.length }} messages</div>
+        </div>
+      </div>
+
+      <!-- Chat Preview -->
+      <div class="chat-preview glass-card">
+        <h3>Conversation Preview</h3>
+        <div *ngIf="!selectedLog" class="no-selection">Select a conversation to view details.</div>
+        <div *ngIf="selectedLog" class="chat-history">
+          <div *ngFor="let msg of selectedLog.messages" class="msg-box" [ngClass]="msg.sender">
+            <span class="sender">{{ msg.sender }}:</span>
+            <p>{{ msg.text }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

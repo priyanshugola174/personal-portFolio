@@ -1,0 +1,35 @@
+# Angular Build Artifacts
+/dist
+/tmp
+/out-tsc
+/bazel-out
+/.angular
+
+# Dependency Directories
+/node_modules
+
+# Logs
+npm-debug.log
+yarn-error.log
+yarn-debug.log*
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+.project
+.classpath
+.settings/
+
+# Environments (CRITICAL: Private Keys)
+src/environments/environment.ts
+src/environments/environment.prod.ts
+.env
+.env.local
+
+# Operating System
+.DS_Store
+Thumbs.db
+desktop.ini
+

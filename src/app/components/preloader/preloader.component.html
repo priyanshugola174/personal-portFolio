@@ -1,0 +1,18 @@
+<div class="preloader-overlay">
+  <div class="preloader-content">
+    <div class="loader-visual">
+      <div class="scan-line"></div>
+      <div class="logo-text">P-G</div>
+    </div>
+    
+    <div class="loading-bar-container">
+      <div class="loading-bar" [style.width.%]="progress"></div>
+    </div>
+    
+    <div class="system-logs">
+      <span class="cursor">></span> {{ currentLog }}
+    </div>
+
+    <div class="percentage">{{ progress }}%</div>
+  </div>
+</div>

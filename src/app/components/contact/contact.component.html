@@ -1,0 +1,65 @@
+<section id="contact" class="contact">
+  <div class="section-header">
+    <h2 class="gradient-text">Connect With Me</h2>
+    <p>Available for full stack roles, freelance builds, and product collaborations.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-methods glass-card">
+      <div class="method">
+        <h4>Email</h4>
+        <a href="mailto:priyanshugola81@gmail.com" class="btn-primary">Send Message</a>
+      </div>
+      <div class="method">
+        <h4>LinkedIn</h4>
+        <a href="https://www.linkedin.com/in/priyanshugola/" target="_blank" class="btn-primary">Connect</a>
+      </div>
+      <div class="method">
+        <h4>Schedule</h4>
+        <a href="#hire-me-form" class="btn-primary">Hire Me</a>
+      </div>
+    </div>
+
+    <div id="hire-me-form" class="contact-form-v2 glass-card">
+      <div class="success-overlay" *ngIf="showSuccess">
+        <div class="success-content">
+          <h3>Message Sent! 🚀</h3>
+          <p>Thank you for reaching out. I'll get back to you shortly.</p>
+        </div>
+      </div>
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" [class.hidden]="showSuccess">
+        <div class="form-group">
+          <input type="text" formControlName="name" placeholder="Name" 
+                 [class.invalid]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+          <small class="error-text" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+            Name is required
+          </small>
+        </div>
+        
+        <div class="form-group">
+          <input type="email" formControlName="email" placeholder="Email"
+                 [class.invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+          <small class="error-text" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']">
+            Email is required
+          </small>
+          <small class="error-text" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['email']">
+            Please enter a valid email address
+          </small>
+        </div>
+
+        <div class="form-group">
+          <textarea rows="4" formControlName="message" placeholder="How can I help you?"
+                    [class.invalid]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"></textarea>
+          <small class="error-text" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+            Message is too short (min 3 chars)
+          </small>
+        </div>
+
+        <button type="submit" class="btn-primary" [disabled]="contactForm.invalid || isSending">
+          <span *ngIf="!isSending">Send Request</span>
+          <span *ngIf="isSending">Sending...</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

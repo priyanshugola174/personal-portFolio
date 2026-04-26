@@ -1,0 +1,43 @@
+<div class="ai-container">
+  <!-- Chat Window -->
+  <div class="chat-window glass-card" *ngIf="isOpen" @slideInOut>
+    <div class="chat-header">
+      <div class="ai-status">
+        <div class="status-dot"></div>
+        <span>AI Assistant</span>
+      </div>
+      <button class="close-btn" (click)="toggleChat()">&times;</button>
+    </div>
+
+    <div class="chat-body" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+      <div *ngFor="let msg of messages" class="message-wrapper" [ngClass]="msg.sender">
+        <div class="message">
+          {{ msg.text }}
+        </div>
+      </div>
+      <div *ngIf="isTyping" class="typing-indicator">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="chat-footer">
+      <input 
+        type="text" 
+        [(ngModel)]="userInput" 
+        (keyup.enter)="sendMessage()"
+        placeholder="Ask me something..."
+      >
+      <button (click)="sendMessage()" class="send-btn">
+        <svg viewBox="0 0 24 24" width="20" height="20">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Toggle Button -->
+  <button class="ai-toggle btn-primary" (click)="toggleChat()">
+    <span *ngIf="!isOpen">✨ Ask AI</span>
+    <span *ngIf="isOpen">Close</span>
+  </button>
+</div>

@@ -1,0 +1,143 @@
+.admin-container {
+  padding: 120px 20px 50px;
+  min-height: 100vh;
+  background: var(--bg-dark);
+}
+
+.login-screen {
+  max-width: 400px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+.login-screen h2 {
+  margin-bottom: 20px;
+}
+
+.login-screen p {
+  color: var(--text-dim);
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group input {
+  background: var(--bg-dark);
+  border: 1px solid var(--border);
+  padding: 15px;
+  border-radius: 12px;
+  color: var(--text-main);
+  text-align: center;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+}
+
+.logs-list {
+  height: 600px;
+  overflow-y: auto;
+}
+
+.logs-list h3, .chat-preview h3 {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.log-item {
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: var(--transition);
+}
+
+.log-item:hover, .log-item.active {
+  border-color: var(--primary);
+  background: var(--glass);
+}
+
+.log-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.log-id {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--primary);
+}
+
+.log-time {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.log-preview {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.chat-preview {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-history {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.msg-box {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  background: var(--glass);
+}
+
+.msg-box.user {
+  border-left: 4px solid var(--primary);
+}
+
+.msg-box.ai {
+  border-left: 4px solid var(--accent);
+}
+
+.sender {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  color: var(--text-dim);
+}
+
+.no-logs, .no-selection {
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 100px;
+}
+
+@media (max-width: 992px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}

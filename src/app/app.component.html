@@ -1,0 +1,21 @@
+<app-custom-cursor></app-custom-cursor>
+<app-preloader *ngIf="isLoading" (loadingComplete)="onLoadingComplete()"></app-preloader>
+
+<div [class.content-hidden]="isLoading">
+  <app-header></app-header>
+
+  <main>
+    <app-hero appScrollReveal></app-hero>
+    <app-about appScrollReveal></app-about>
+    <app-skills appScrollReveal></app-skills>
+    <app-ai-capabilities appScrollReveal></app-ai-capabilities>
+    <app-projects appScrollReveal></app-projects>
+    <app-services appScrollReveal></app-services>
+    <app-experience appScrollReveal></app-experience>
+    <app-blog appScrollReveal></app-blog>
+    <app-contact appScrollReveal></app-contact>
+    <app-ai-assistant appScrollReveal></app-ai-assistant>
+  </main>
+
+  <app-footer></app-footer>
+</div>
