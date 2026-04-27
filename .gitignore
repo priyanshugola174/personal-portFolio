@@ -22,14 +22,11 @@ yarn-debug.log*
 .classpath
 .settings/
 
-# Environments (CRITICAL: Private Keys)
-src/environments/environment.ts
-src/environments/environment.prod.ts
-.env
-.env.local
+# Environments (Now allowed for Vercel, but we will use placeholders)
+# src/environments/environment.ts
+# src/environments/environment.prod.ts
 
 # Operating System
 .DS_Store
 Thumbs.db
 desktop.ini
-
