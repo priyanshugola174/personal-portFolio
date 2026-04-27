@@ -30,4 +30,12 @@ export class HeaderComponent {
     this.isMenuOpen = false;
     document.body.style.overflow = 'auto';
   }
+
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    this.closeMenu();
+  }
 }
